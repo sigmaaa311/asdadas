@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VEXIFIED GEN🌐</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #000;
+      color: #fff;
+      overflow: hidden;
+      position: relative;
+    }
+    .buttons-group button {
+      background: #1a0000;
+      color: #ff4d4d;
+      text-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff0000;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+      border: 1px solid #ff000033;
+      font-weight: bold;
+      padding: 1rem 2rem;
+      font-size: 1.125rem;
+      border-radius: 0.5rem;
+      transition: all 0.3s;
+    }
+    .buttons-group button:hover {
+      box-shadow: 0 0 30px #ff4d4d, 0 0 60px #ff0000;
+      transform: scale(1.05);
+    }
+    #snowCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+    }
+    .neon-text {
+      color: #ff4d4d;
+      text-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff0000;
+    }
+    .section {
+      z-index: 1;
+      padding: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="snowCanvas"></canvas>
+
+  <!-- Top Message Bar -->
+  <div class="fixed top-0 left-0 right-0 bg-black/50 p-2 text-center text-sm text-white/80 backdrop-blur-md z-10">
+    Currently Listening To: <span id="currentlyListening" class="neon-text">Loading...</span>
+  </div>
+
+  <!-- Stats Section -->
+  <div class="section stats-section flex flex-col items-center justify-center min-h-screen text-center">
+    <div class="flex justify-center gap-8 mb-8">
+      <div class="bg-black/20 p-6 rounded-lg backdrop-blur-md">
+        <div id="totalUsers" class="text-5xl font-bold neon-text">1821</div>
+        <div class="text-sm text-white/80">Total Users</div>
+      </div>
+      <div class="bg-black/20 p-6 rounded-lg backdrop-blur-md">
+        <div class="text-5xl font-bold neon-text">25k+</div>
+        <div class="text-sm text-white/80">Total Hits</div>
+      </div>
+    </div>
+    <p class="text-sm text-white/60 mb-8">
+      Trusted and reliable with <span class="neon-text">25k+ hits</span>. Made by vextroz
+    </p>
+
+    <div class="buttons-group flex flex-wrap justify-center gap-4">
+      <button onclick="window.location.href='https://discord.gg/rPQ5Ydxdqs'">
+        <i class="fas fa-discord mr-2"></i> ⚠️ Join Our Discord ⚠️
+      </button>
+      <button onclick="window.location.href='https://bloxtools.world/controlPage/create/'">
+        🌐 Generate Website 🌐 
+      </button>
+      <button onclick="window.location.href='https://bloxtools.space/Refresher/'">
+        🍪 Cookie Refresher 🍪
+      </button>
+      <button onclick="window.location.href='https://bloxtools.world/controlPage/hyper-link/'">
+        🔗 Hyper Link 🔗
+      </button>
+      <button onclick="window.location.href='https://example.com/age-bypasser'">
+        🛡️ Age Bypasser 🛡️
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="fixed bottom-0 left-0 right-0 bg-black/50 p-2 text-center text-sm text-white/80 backdrop-blur-md z-10">
+    <div class="flex justify-center gap-4">
+      <a href="https://discord.com/users/.vextroz" target="_blank" class="hover:text-white hover:underline">
+        Discord: .vextroz
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    // Restore original snow effect
+    (function(){
+      const canvas = document.getElementById("snowCanvas");
+      const ctx = canvas.getContext("2d");
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+      let particles = [];
+      const numParticles = 100;
+      for (let i = 0; i < numParticles; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          radius: Math.random() * 3 + 1,
+          speedY: Math.random() * 1 + 0.5
+        });
+      }
+      function drawSnow() {
+        ctx.clearRect(0, 0, width, height);
+        ctx.fillStyle = "white";
+        ctx.beginPath();
+        for (let i = 0; i < numParticles; i++) {
+          let p = particles[i];
+          ctx.moveTo(p.x, p.y);
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        }
+        ctx.fill();
+        for (let i = 0; i < numParticles; i++) {
+          let p = particles[i];
+          p.y += p.speedY;
+          if (p.y > height) {
+            p.y = 0;
+            p.x = Math.random() * width;
+          }
+        }
+      }
+      setInterval(drawSnow, 30);
+      window.addEventListener("resize", () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+    })();
+
+    const currentlyListeningElement = document.getElementById("currentlyListening");
+    const songs = [
+      "VEXIFIED AUTOHAR",
+      "Made by .vextroz",
+      "https://discord.gg/rPQ5Ydxdqs",
+      "Tools for creators and legends"
+      "VEXIFIED BEAMS
+    ];
+    function updateCurrentlyListening() {
+      const randomSong = songs[Math.floor(Math.random() * songs.length)];
+      currentlyListeningElement.textContent = randomSong;
+    }
+    setInterval(updateCurrentlyListening, 10000);
+    updateCurrentlyListening();
+
+    const totalUsersElement = document.getElementById("totalUsers");
+    let totalUsers = localStorage.getItem("totalUsers") ? parseInt(localStorage.getItem("totalUsers")) : 1821;
+    totalUsersElement.textContent = totalUsers;
+    setInterval(() => {
+      totalUsers++;
+      localStorage.setItem("totalUsers", totalUsers);
+      totalUsersElement.textContent = totalUsers;
+    }, 10001);
+  </script>
+</body>
+</html>
